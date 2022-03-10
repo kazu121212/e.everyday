@@ -42,6 +42,7 @@
 ### Association
 
 - has_many   :notifications
+- has_many   :checks
 - belongs_to :user
 
 ## notifications テーブル
@@ -50,7 +51,7 @@
 | ------------------ | ----------- | ------------------------------ |
 | checked            | boolean     | default: false, null: false    |
 | action             | string      | default: '', null: false       |
-| checks             | references  | null: false, foreign_key: true |
+| check              | references  | null: false, foreign_key: true |
 | user               | references  | null: false, foreign_key: true |
 | student            | references  | null: false, foreign_key: true |
 
