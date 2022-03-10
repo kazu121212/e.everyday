@@ -1,24 +1,75 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+| Column             | Type   | Options                   |
+| ------------------ | ------ | ------------------------- |
+| name               | string | null: false               |
+| email              | string | null: false, unique: true |
+| encrypted_password | string | null: false               |
+| last_name          | string | null: false               |
+| first_name         | string | null: false               |
+| last_name_kana     | string | null: false               |
+| first_name_kana    | string | null: false               |
+| birth_date         | date   | null: false               |
 
-* Ruby version
+### Association
 
-* System dependencies
+- has_many :students
+- has_many :notifications
+- has_many :roles
 
-* Configuration
+## checks テーブル
 
-* Database creation
+| Column             | Type        | Options                        |
+| ------------------ | ----------- | ------------------------------ |
+| check_in_time      | datetime    |                                |
+| check_out_time     | datetime    |                                |
+| student            | references  | null: false, foreign_key: true |
 
-* Database initialization
+### Association
 
-* How to run the test suite
+- has_many   :notifications
+- belongs_to :student
 
-* Services (job queues, cache servers, search engines, etc.)
+## students テーブル
 
-* Deployment instructions
+| Column             | Type        | Options                        |
+| ------------------ | ----------- | ------------------------------ |
+| name               | string      | null: false                    |
+| user               | references  | null: false, foreign_key: true |
 
-* ...
+### Association
+
+- has_many   :notifications
+- belongs_to :user
+
+## notifications テーブル
+
+| Column             | Type        | Options                        |
+| ------------------ | ----------- | ------------------------------ |
+| checked            | boolean     | default: false, null: false    |
+| action             | string      | default: '', null: false       |
+| checks             | references  | null: false, foreign_key: true |
+| user               | references  | null: false, foreign_key: true |
+| student            | references  | null: false, foreign_key: true |
+
+
+### Association
+
+- belongs_to :check
+- belongs_to :user
+- belongs_to :student
+
+## roles テーブル
+
+| Column             | Type        | Options                        |
+| ------------------ | ----------- | ------------------------------ |
+| name               | string      | null: false                    |
+| key                | integer     | null: false                    |
+| user               | references  | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :user
+
