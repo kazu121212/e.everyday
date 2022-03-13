@@ -1,0 +1,44 @@
+canvas, video{
+  border: 1px solid gray;
+}
+
+header {
+  height: 80px;
+  background-color: #f0f0f0;
+}
+
+.upper-content{
+  height: calc(100vh - 80px - 200px);
+  background-color: aqua;
+  display: flex;
+}
+
+
+
+.photo-area {
+  background-color: #253141;
+  width: calc(100vw - 400px);
+  height: 100%;
+}
+
+.time {
+  background-color: #FFFFFF;
+  height: 100%;
+  width: 400px;
+}
+
+.bottom-content {
+  height: 200px;
+  background-color:#DDDDDD;
+}
+.check-in {
+  background-color:#FFFFFF;
+  width: 50%;
+  height: 100%;
+}
+.check-out {
+  background-color: #FFFFFF;
+  height: 100%;
+  width: 50%;
+}
+
