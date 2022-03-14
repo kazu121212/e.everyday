@@ -1,0 +1,66 @@
+  <head>
+  
+  <%= javascript_include_tag 'camera.js', 'data-turbolinks-track': 'reload' %>
+   <%= javascript_include_tag 'date.js', 'data-turbolinks-track': 'reload' %>
+ </head>
+
+ <header class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 bg-light border-bottom shadow-sm">
+     
+      <a class="mr-md-auto p-2 text-primary" href="#">管理</a>
+      <h5 class="my-0 mr-md-auto font-weight-normal">Welcome to E.Everyday</h5> 
+      <a class="btn btn-outline-primary" href="#">Check-in</a>
+
+    </header>
+
+    <div class="contents">
+      <div class="upper-content">
+        <div class ="photo-area">
+        
+          <video muted id="camera" width="100%" height="100%"></video>
+          <canvas id="picture" width="300" height="200"></canvas>
+          <form>
+            <button type="button" id="shutter_in">in</button>
+            <button type="button" id="shutter_out">out</button>
+          </form>
+
+          <%= audio_tag("shuttersound.mp3", id:"se") %>
+        </div>
+        <div class ="time">
+        </div>
+        <!-- 『新着情報』を表示する -->
+      </div>
+      <div class="bottom-content">
+      <div class ="check-in">
+        </div>
+        <div class ="check-out">
+        </div>
+        <!-- 『フォーム』を表示する -->
+      </div>
+    </div>
+
+
+ 
+
+
+<%# <audio id="se" preload="auto">
+  <source src="./images/shuttersound.mp3" type="audio/mp3">
+</audio> %>
+
+<script>
+var genzai = new Date();
+document.write(genzai.getUTCHours());
+document.write("<br>");
+
+var y = genzai.getUTCFullYear();
+var mo = genzai.getUTCMonth() + 1;
+var d = genzai.getUTCDate();
+var week = genzai.getUTCDay();
+var weeks = ["日", "月", "火", "水", "木", "金", "土"];
+var w = weeks[week];
+var t = genzai.getUTCHours();
+var mi = genzai.getUTCMinutes();
+var s = genzai.getUTCSeconds();
+var ms = genzai.getUTCMilliseconds();
+document.write(y + "年" + mo + "月" + d + "日" + w + "曜日" + t + "時" + mi + "分" + s + "秒" );
+</script>
+  
