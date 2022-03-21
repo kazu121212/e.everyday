@@ -3,12 +3,12 @@ window.onload = () => {
   const canvas = document.querySelector("#picture");
   const se     = document.querySelector('#se');
 
+  
   /** カメラ設定 */
   const constraints = {
     audio: true,
     video: {
-      width: 1500,
-      height: 800,
+    
       facingMode: "user"   // フロントカメラを利用する
       // facingMode: { exact: "environment" }  // リアカメラを利用する場合
     }
@@ -56,4 +56,6 @@ window.onload = () => {
     ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
   });
 });
+
+
 };

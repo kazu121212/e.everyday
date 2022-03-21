@@ -1,11 +1,82 @@
 canvas, video{
   border: 1px solid gray;
+
+ 
 }
 
 header {
-  height: 80px;
   background-color: #f0f0f0;
+  padding: .5rem;
+  text-align: right;
 }
+a {
+  color: #fff;
+  text-decoration: none;
+  white-space: nowrap;
+}
+li {
+  margin: 2rem 0;
+}
+ 
+/* ボタン */
+.btn-menu {
+  border: 1px solid rgb(153, 153, 153);
+  background: transparent;
+  color: rgba(0, 174, 255, 0.911);
+  padding: .5rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.lists {
+  border: 1px solid #999;
+  background: transparent;
+  color: #fff;
+  padding: .5rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  line-height: 1;
+}
+ 
+/* メニュー */
+nav {
+  background:#444444;
+  position: absolute;
+  z-index: 1;
+  top: 3.125rem;
+  right: 0;
+  overflow-x: hidden;
+  text-align: center;
+  width: 0;
+  height: calc(100vh - 80px);
+  transition: .5s; /* ← 追加 */
+}
+
+.na {
+  background:#444444;
+  position: absolute;
+  z-index: 1;
+  top: 2.5rem;
+  right: 0;
+  overflow-x: hidden;
+  text-align: center;
+  width: 0;
+  height: calc(100vh - 80px);
+  transition: .5s; /* ← 追加 */
+}
+/* メニューを開いた時 */
+nav.open-menu {
+  width: 400px;
+  height: calc(100vh - 80px);
+}
+
+.na.open-teacher {
+  width: 400px;
+  height: calc(100vh - 80px);
+}
+
+
 
 .upper-content{
   height: calc(100vh - 80px - 200px);
@@ -21,6 +92,8 @@ header {
   height: 100%;
 }
 
+
+
 .time {
   background-color: #FFFFFF;
   height: 100%;
@@ -30,15 +103,82 @@ header {
 .bottom-content {
   height: 200px;
   background-color:#DDDDDD;
+  display: flex;
+  width: 100vw;
+  background-color:#f0f0f0;
+
 }
 .check-in {
-  background-color:#FFFFFF;
-  width: 50%;
+  background-color:gray;
+  width: 50vw;
   height: 100%;
 }
 .check-out {
-  background-color: #FFFFFF;
+  background-color:lightgray;
   height: 100%;
-  width: 50%;
+  width: 50vw;
 }
 
+
+
+.time {
+  font-size: 25px;
+  height: calc(100vh - 80px - 200px);
+}
+
+#text-time {
+  font-size: 80px;
+  float: right;
+ 
+}
+
+#text-second {
+  font-size: 30px;
+  float: right;
+  padding-right: 60px;
+
+ 
+}
+
+.hour-minutes {
+  height: 130px;
+  padding-right: 60px;
+}
+
+.second {
+  height :45px;
+}
+
+
+
+.year-month-day {
+  padding-left: 30px;
+  height: 200px;
+ 
+  
+}
+
+
+#text-year {
+  font-size: 40px;
+ 
+}
+
+#text-date {
+  font-size: 60px;
+ 
+}
+
+.date-day {
+  padding-left: 60px;
+
+  }
+ 
+  #text-day {
+    font-size:40px;
+    padding-left: 60px;
+
+   
+  }
+
+ 

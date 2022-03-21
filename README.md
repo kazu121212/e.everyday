@@ -36,7 +36,9 @@
 
 | Column             | Type        | Options                        |
 | ------------------ | ----------- | ------------------------------ |
-| name               | string      | null: false                    |
+| first_name         | string      | null: false                    |
+| last_name          | string      | null: false                    |
+| course             | string      | null: false                    |
 | user               | references  | null: false, foreign_key: true |
 
 ### Association
