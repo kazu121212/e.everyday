@@ -58,5 +58,10 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
+gem 'pry-rails'
+
+gem 'mini_magick'
+gem 'image_processing', '~> 1.2'
+
 # エラーメッセージの日本語化
 gem 'rails-i18n'

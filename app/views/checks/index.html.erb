@@ -1,66 +1,277 @@
-  <head>
-  
-  <%= javascript_include_tag 'camera.js', 'data-turbolinks-track': 'reload' %>
-   <%= javascript_include_tag 'date.js', 'data-turbolinks-track': 'reload' %>
- </head>
+      <head>
+      
+        <%= javascript_include_tag 'camera.js', 'data-turbolinks-track': 'reload' %>
+        <%# <%= javascript_include_tag 'date.js', 'data-turbolinks-track': 'reload' %> 
+         
+      </head>
 
- <header class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 bg-light border-bottom shadow-sm">
-     
-      <a class="mr-md-auto p-2 text-primary" href="#">管理</a>
-      <h5 class="my-0 mr-md-auto font-weight-normal">Welcome to E.Everyday</h5> 
-      <a class="btn btn-outline-primary" href="#">Check-in</a>
-
-    </header>
-
-    <div class="contents">
-      <div class="upper-content">
-        <div class ="photo-area">
+      <header>
+        <button class="btn-menu">check-in</button>
+        <nav>
+        <div class = "lists" >
+           <button class="teacher-menu">Teacher</button>
+          </div>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">course</th>
+              </tr>
+            </thead>
+            <% @students.each do |student| %>
+            <tbody>
+              <tr data-name = "<%=student.first_name %>" data-id = "<%=student.id %>" class = "aaa" >
+                <th scope="row"  id = "id"><%= student.id %></th>
+                
+                <td id = "name" > <%= student.first_name  %></td>
+                <td ><%= student.last_name %></td>
+                <td><%= student.course %></td>
+                
+              </tr>
+              
+            </tbody>
+           
+            
+             
+            <% end %>
+         </table>
+ 
+          <div class ="na">
+            <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+               
+              </tr>
+            </thead>
+            <% @teachers.each do |teacher| %>
+            <tbody>
+              <tr class = "aaa">
+                <th scope="row"> <%= teacher.id %></th>
+                <td> <%= teacher.first_name %></td>
+                <td><%= teacher.last_name %></td>
+              </tr>
+              
+            </tbody>
+            <% end %>
+         </table>
         
+          </div>
+            </nav>
+            
+          </header>
+
+
+
+    
+
+
+    
+      <div class="upper-content">
+       
+        <div class ="photo-area">
+       
+
+
+          
           <video muted id="camera" width="100%" height="100%"></video>
-          <canvas id="picture" width="300" height="200"></canvas>
-          <form>
-            <button type="button" id="shutter_in">in</button>
-            <button type="button" id="shutter_out">out</button>
+        
+          <form id ="ccc">
+            <button data-name = "IN" class ="in" type="button" id="shutter_in">IN</button>
+            <button data-name = "OUT"class = "out" type="button" id="shutter_out">OUT</button>
           </form>
 
           <%= audio_tag("shuttersound.mp3", id:"se") %>
+          <%= audio_tag("checkin.mp3", id:"see") %>
+
+          <div class = "name-area">
+
+           <p data-name="#" id="h1"></p>
+
+           </div>
+         
+        
+         
         </div>
         <div class ="time">
+         <div class = "hour-minutes">
+           <script type="text/javascript">
+         function showClock1() {
+   var nowTime = new Date();
+   var nowHour = nowTime.getHours();
+   var nowMin  = nowTime.getMinutes();
+   var nowSec  = nowTime.getSeconds();
+   var msg = nowHour + ":" + nowMin + ":" + nowSec ;
+   var hm = nowHour + ":" + nowMin ;
+
+   document.getElementById("text-time").innerHTML = msg;
+    document.getElementById("time-check").innerHTML = hm;
+}
+setInterval('showClock1()',1000);
+           </script>
+
+           <p id="text-time"></p>
+
+              
+                  </div>
+
+          <%# <span id="text-time"></span>
+
+            <script type="text/javascript">
+            document.getElementById("text-time").innerHTML = showTime();
+            
+            function showTime() {
+              var now = new Date();
+              var nowhour = now.getHours();
+              var nowminutes = now.getMinutes();
+              
+            
+              var text = nowhour + "：" + nowminutes ; 
+              
+              return text;
+            }
+
+             </script> %>
+            
+            <%# <div class = "second">
+              <span id="text-second"></span>
+
+              <script type="text/javascript">
+              document.getElementById("text-second").innerHTML = showTime();
+              
+              function showTime() {
+                var now = new Date();
+                var nowseconds = now.getSeconds();
+              
+                var text =  nowseconds; 
+                
+                return text;
+              }
+
+              </script>
+
+            </div> %>
+            
+          
+          
+
+
+          <div class = year-month-day>
+            <p><span id="text-year"></span></p>
+
+            <script type="text/javascript">
+              document.getElementById("text-year").innerHTML = showDay();
+            function showDay() {
+              var now = new Date();
+              var nowyear = now.getFullYear();
+              var year = nowyear + "年";
+              return  year;
+            }
+            </script>
+
+            <div class ="date-day">
+
+              <p><span id="text-date"></span></p>
+
+              <script type="text/javascript">
+                document.getElementById("text-date").innerHTML = showDay();
+              function showDay() {
+                var now = new Date();
+                var nowmonth = now.getMonth();
+                var nowdate = now.getDate();
+                var date = nowmonth + "月" + nowdate + "日";
+                return  date;
+              }
+              </script>
+
+              
+
+              <span id="text-day"></span>
+
+              <script type="text/javascript">
+                document.getElementById("text-day").innerHTML = showDay();
+              function showDay() {
+                var weeks = [ "日曜日", "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日" ];
+                var now = new Date();
+                var weekdays = now.getDay();
+                return weeks[weekdays];
+              }
+              </script>
+            </div>
+          </div>
+
+          
         </div>
         <!-- 『新着情報』を表示する -->
       </div>
       <div class="bottom-content">
       <div class ="check-in">
+      <%# <script>
+window.onload = function() {
+  setInterval(function() {
+    var dd = new Date();
+    document.getElementById("text-day").innerHTML = dd.toLocaleString();
+  }, 1000);
+}
+
+</script>
+<div id="text-day"></div> %>
         </div>
         <div class ="check-out">
         </div>
         <!-- 『フォーム』を表示する -->
       </div>
-    </div>
 
+      
+     
+      <nav id="g-nav">
+      <div class = "heading">
+        <h2 class='cancel' id="btnCancel">Cancel</h2>
+        <div class="confirm" >Check</div>
+        <div id="timer">5</div>
+   
+       
+      </div>
+       <%= form_with url: "/checks", method: :post,  id: "form" do |f| %>
+        <%= f.hidden_field :check_in_time , value:"time-check" , id: "check_in_time"%>
+        <%= f.hidden_field :check_out_time , value:"time-check", id: "check_out_time" %>
+        <%= f.hidden_field :student_id , value:"#", id: "student_id" %>
+        <%= f.hidden_field :image ,  id: "image" %>
+      
+      <% end %>
+
+        <canvas id="picture" width="300" height="300"></canvas>
+
+         <p id="id-check"></p>
+        <p data-name="#" id="h2"></p>
+        
+          <p id="time-check"></p>
+
+      <footer id="footer">
+      IN
+      </footer>
+     
+      </nav>
+        
+
+      
+
+
+
+    
+  <%= javascript_include_tag 'check-in.js', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'student.js', 'data-turbolinks-track': 'reload' %>
+
+
+</body>
 
  
 
 
-<%# <audio id="se" preload="auto">
-  <source src="./images/shuttersound.mp3" type="audio/mp3">
-</audio> %>
 
-<script>
-var genzai = new Date();
-document.write(genzai.getUTCHours());
-document.write("<br>");
 
-var y = genzai.getUTCFullYear();
-var mo = genzai.getUTCMonth() + 1;
-var d = genzai.getUTCDate();
-var week = genzai.getUTCDay();
-var weeks = ["日", "月", "火", "水", "木", "金", "土"];
-var w = weeks[week];
-var t = genzai.getUTCHours();
-var mi = genzai.getUTCMinutes();
-var s = genzai.getUTCSeconds();
-var ms = genzai.getUTCMilliseconds();
-document.write(y + "年" + mo + "月" + d + "日" + w + "曜日" + t + "時" + mi + "分" + s + "秒" );
-</script>
-  
+ 
