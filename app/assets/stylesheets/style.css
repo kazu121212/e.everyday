@@ -76,7 +76,11 @@ nav.open-menu {
   height: calc(100vh - 80px);
 }
 
-
+.h1 {
+  position: absolute;
+  top:300px;
+  left :100px;
+}
 
 .upper-content{
   height: calc(100vh - 80px - 200px);
@@ -90,7 +94,79 @@ nav.open-menu {
   background-color: #253141;
   width: calc(100vw - 400px);
   height: 100%;
+  position: relative;
 }
+
+video {
+  object-fit: cover;
+}
+
+.name-area {
+  position: absolute;
+  top: 0px;
+  left :0px;
+  background-color: #444444;
+  height: 50px;
+  width: 100%;
+  opacity: 0.7;
+
+}
+
+#ccc {
+  position: absolute;
+  top: 500px;
+  left :600px;
+  display: flex;
+  justify-content:space-between ;
+
+  opacity: 0.7;
+
+}
+
+#h1 {
+  background-color: gra;
+
+  position: absolute;
+  top: 0px;
+  left :80px;
+  font-size: 30px;
+  opacity: 0.9;
+  color: white;
+
+
+}
+
+
+
+
+.in {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  border-color: rgb(144, 238, 152);
+  border-width: 4px;
+ color: rgb(144, 238, 152) ;
+ font-size: 25px;
+ margin-right: 80px;
+ letter-spacing: 5px;
+ 
+}
+
+.out {
+
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  border-color: orange;
+  border-width: 4px;
+  color:orange;
+  font-size: 25px;
+  letter-spacing: 5px;
+ 
+
+
+}
+
 
 
 
@@ -104,6 +180,7 @@ nav.open-menu {
   height: 200px;
   background-color:#DDDDDD;
   display: flex;
+ 
   width: 100vw;
   background-color:#f0f0f0;
 
@@ -182,3 +259,80 @@ nav.open-menu {
   }
 
  
+  /*========= 画像確認画面のためのCSS ===============*/
+
+  #g-nav {
+    background: rgb(255 255 255 / 91%);
+    position: absolute;
+    z-index: 1;
+    top: 3.125rem;
+    left: 0;
+    overflow-x: hidden;
+    text-align: center;
+    width: 0;
+    transition: .7s; /* ← 追加 */
+    margin:0 auto;
+  }
+  #g-nav.open-menu {
+    width:500px;
+    height:600px
+
+  
+  }
+
+  #g-nav header,footer {
+    background-color:red;
+    height: 50px;
+    
+  }
+  
+
+  .heading {
+    display: flex;
+    height: 50px;
+    background-color: lightgray;
+
+    align-items: center;
+  }
+
+  .cancel {
+    padding-left:20px;
+    color: rgb(255, 60, 0);
+   
+
+  }
+  #timer {
+    padding-right:20px;
+    color: rgb(255, 60, 0);
+    font-size: 20px;
+
+  }
+
+  .confirm {
+    margin: auto;
+    margin-left: 150px;
+  }
+
+  #picture {
+    margin-top:20px;
+  }
+
+  #h2 {
+    font-size: 40px;
+    
+  }
+
+  #time-check {
+    font-size: 30px;
+    
+  }
+
+  footer {
+    position: absolute;/*←絶対位置*/
+    bottom: 0; /*下に固定*/
+    width:100%;
+    font-size: 30px;
+    background-color: rgb(144, 238, 152) ;
+    color: white;
+    letter-spacing: 8px;
+  }

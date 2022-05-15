@@ -22,14 +22,19 @@
             </thead>
             <% @students.each do |student| %>
             <tbody>
-              <tr>
-                <th scope="row"> <%= student.id %></th>
-                <td> <%= student.first_name %></td>
-                <td><%= student.last_name %></td>
+              <tr data-name = "<%=student.first_name %>" data-id = "<%=student.id %>" class = "aaa" >
+                <th scope="row"  id = "id"><%= student.id %></th>
+                
+                <td id = "name" > <%= student.first_name  %></td>
+                <td ><%= student.last_name %></td>
                 <td><%= student.course %></td>
+                
               </tr>
               
             </tbody>
+           
+            
+             
             <% end %>
          </table>
  
@@ -45,7 +50,7 @@
             </thead>
             <% @teachers.each do |teacher| %>
             <tbody>
-              <tr>
+              <tr class = "aaa">
                 <th scope="row"> <%= teacher.id %></th>
                 <td> <%= teacher.first_name %></td>
                 <td><%= teacher.last_name %></td>
@@ -69,21 +74,52 @@
       <div class="upper-content">
        
         <div class ="photo-area">
+       
+
+
           
           <video muted id="camera" width="100%" height="100%"></video>
-          <%# <canvas id="picture" width="500" height="200"></canvas>
-          <form>
-            <button type="button" id="shutter_in">in</button>
-            <button type="button" id="shutter_out">out</button>
-          </form> %>
+        
+          <form id ="ccc">
+            <button data-name = "IN" class ="in" type="button" id="shutter_in">IN</button>
+            <button data-name = "OUT"class = "out" type="button" id="shutter_out">OUT</button>
+          </form>
 
           <%= audio_tag("shuttersound.mp3", id:"se") %>
+          <%= audio_tag("checkin.mp3", id:"see") %>
+
+          <div class = "name-area">
+
+           <p data-name="#" id="h1"></p>
+
+           </div>
+         
         
          
         </div>
         <div class ="time">
          <div class = "hour-minutes">
-          <span id="text-time"></span>
+           <script type="text/javascript">
+         function showClock1() {
+   var nowTime = new Date();
+   var nowHour = nowTime.getHours();
+   var nowMin  = nowTime.getMinutes();
+   var nowSec  = nowTime.getSeconds();
+   var msg = nowHour + ":" + nowMin + ":" + nowSec ;
+   var hm = nowHour + ":" + nowMin ;
+
+   document.getElementById("text-time").innerHTML = msg;
+    document.getElementById("time-check").innerHTML = hm;
+}
+setInterval('showClock1()',1000);
+           </script>
+
+           <p id="text-time"></p>
+
+              
+                  </div>
+
+          <%# <span id="text-time"></span>
 
             <script type="text/javascript">
             document.getElementById("text-time").innerHTML = showTime();
@@ -99,9 +135,9 @@
               return text;
             }
 
-             </script>
-            </div>
-            <div class = "second">
+             </script> %>
+            
+            <%# <div class = "second">
               <span id="text-second"></span>
 
               <script type="text/javascript">
@@ -118,7 +154,7 @@
 
               </script>
 
-            </div>
+            </div> %>
             
           
           
@@ -174,21 +210,55 @@
       </div>
       <div class="bottom-content">
       <div class ="check-in">
-      <script>
+      <%# <script>
 window.onload = function() {
   setInterval(function() {
     var dd = new Date();
-    document.getElementById("T1").innerHTML = dd.toLocaleString();
+    document.getElementById("text-day").innerHTML = dd.toLocaleString();
   }, 1000);
 }
 
 </script>
-<div id="T1"></div>
+<div id="text-day"></div> %>
         </div>
         <div class ="check-out">
         </div>
         <!-- 『フォーム』を表示する -->
       </div>
+
+      
+     
+      <nav id="g-nav">
+      <div class = "heading">
+        <h2 class='cancel' id="btnCancel">Cancel</h2>
+        <div class="confirm" >Check</div>
+        <div id="timer">5</div>
+   
+       
+      </div>
+       <%= form_with url: "/checks", method: :post,  id: "form" do |f| %>
+        <%= f.hidden_field :check_in_time , value:"time-check" , id: "check_in_time"%>
+        <%= f.hidden_field :check_out_time , value:"time-check", id: "check_out_time" %>
+        <%= f.hidden_field :student_id , value:"#", id: "student_id" %>
+        <%= f.hidden_field :image ,  id: "image" %>
+      
+      <% end %>
+
+        <canvas id="picture" width="300" height="300"></canvas>
+
+         <p id="id-check"></p>
+        <p data-name="#" id="h2"></p>
+        
+          <p id="time-check"></p>
+
+      <footer id="footer">
+      IN
+      </footer>
+     
+      </nav>
+        
+
+      
 
 
 
@@ -201,9 +271,7 @@ window.onload = function() {
 
  
 
-<%# <audio id="se" preload="auto">
-  <source src="./images/shuttersound.mp3" type="audio/mp3">
-</audio> %>
+
 
 
  
