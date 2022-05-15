@@ -63,3 +63,5 @@ gem 'pry-rails'
 gem 'mini_magick'
 gem 'image_processing', '~> 1.2'
 
+# エラーメッセージの日本語化
+gem 'rails-i18n'
